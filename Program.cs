@@ -104,9 +104,16 @@ namespace Findle
             //
             // Filter for words that have required letters
             // in required positions
-            if (anchors.Length == 5)
+            if (anchors.Length > 0)
             {
-                Regex match = new(anchors, RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                if (anchors.Length != 5)
+                {
+                    throw new ArgumentException("The anchor option must be empty OR exactly 5 letters");
+                }
+
+                anchors = string.Concat(anchors.Select(c => char.IsLetter(c) ? c : '.'));
+
+                Regex match = new($"^{anchors}$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
                 words = words.Where(w => match.IsMatch(w));
             }
 
