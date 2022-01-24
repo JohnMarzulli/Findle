@@ -25,9 +25,11 @@ namespace Findle
     class Program
     {
         private static string[] StarterWords = {
+            "QUICK",
+            "DRAPE",
+            "WINDY",
             "ARISE",
             "GOURD",
-            "WINDY",
             "ROAST",
             "TEARS",
             "MEATS",
