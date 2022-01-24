@@ -75,9 +75,10 @@ namespace Findle
 
             IEnumerable<string> validWords = words
                 .Select(w => w?.Trim() ?? string.Empty)
-                .Select(w => w.ToLowerInvariant())
                 .Where(w => w.Length == 5)
+                .Where(w => string.Equals(w.ToLowerInvariant(), w.ToLower()))
                 .Where(w => !w.Any(c => !char.IsLetter(c)))
+                .Select(w => w.ToLowerInvariant())
                 .Distinct();
 
             return validWords;
