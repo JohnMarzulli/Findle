@@ -26,13 +26,18 @@ namespace Findle
     {
         private static string[] StarterWords = {
             "ARISE",
+            "GOURD",
+            "WINDY",
             "ROAST",
             "TEARS",
             "MEATS",
             "OUIJA",
             "PIZZA",
             "AUDIO",
-            "FARTS"
+            "FARTS",
+            "PAINT",
+            "SWING",
+            "VAPES"
         };
 
         static void Main(
@@ -45,7 +50,7 @@ namespace Findle
                     try
                     {
                         // We have the parsed arguments, so let's just pass them down
-                        IEnumerable<string> potentialWords = FindWords(opts).OrderBy(w => w);
+                        IEnumerable<string> potentialWords = FindWords(opts);
 
                         foreach (string option in potentialWords)
                         {
@@ -133,7 +138,7 @@ namespace Findle
                 words = words.Where(w => !w.Contains(eliminated));
             }
 
-            return words;
+            return words.OrderBy(w => w);
         }
     }
 }
